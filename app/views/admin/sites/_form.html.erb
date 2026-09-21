@@ -1,0 +1,12 @@
+<%= form_with(model: [:admin, site], local: true) do |form| %>
+  <% site.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+  <%= form.label :name %>
+  <%= form.text_field :name, required: true %>
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+  <%= form.submit %>
+<% end %>

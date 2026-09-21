@@ -1,0 +1,11 @@
+<h1>All Rooms</h1>
+<%= link_to "Home", root_path %>
+
+<% @rooms.each do |room| %>
+  <div>
+    <p><%= link_to room.name, room_path(room) %></p>
+    <p>Site: <%= room.site.name %></p>
+    <%= link_to "View Reservations", reservations_path(room_id: room.id) %>
+  </div>
+  <hr>
+<% end %>

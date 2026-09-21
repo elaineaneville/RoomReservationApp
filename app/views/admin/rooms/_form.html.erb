@@ -1,0 +1,14 @@
+<%= form_with(model: [:admin, room], local: true) do |form| %>
+  <% room.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+  <%= form.label :name %>
+  <%= form.text_field :name, required: true %>
+  <%= form.label :site_id, "Site" %>
+  <%= form.collection_select(:site_id, sites, :id, :name, {}, required: true) %>
+  <%= form.label :capacity %>
+  <%= form.number_field :capacity, required: true, min: 1 %>
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+  <%= form.submit %>
+<% end %>

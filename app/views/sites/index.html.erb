@@ -1,0 +1,14 @@
+<h1>Room Reservation App</h1>
+<h2>Sites</h2>
+<%= link_to "View All Rooms", rooms_path %> 
+<%= link_to "View All Reservations", reservations_path %>
+
+<hr>
+<% @sites.each do |site| %>
+  <div>
+    <h3><%= link_to site.name, site_path(site) %></h3>
+    <p>Address:<%= site.address %></p>
+    <p>Description:<%= site.description %></p>
+    <p>Count: <%= site.rooms.count %></p>
+  </div>
+<% end %>

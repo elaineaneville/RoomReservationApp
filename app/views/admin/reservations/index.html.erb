@@ -1,0 +1,16 @@
+<h1>Reservation requests</h1>
+<%= link_to "Staff view", reservations_path %>
+<%= link_to "Manage rooms", admin_rooms_path %>
+<%= link_to "Manage sites", admin_sites_path %>
+
+<% @reservations.each do |reservation| %>
+  <article>
+    <h2><%= reservation.room.name %> at <%= reservation.room.site.name %></h2>
+    <p><%= reservation.reserver_name %> | <%= reservation.reservation_date %> | <%= reservation.start_time.strftime("%I:%M %p") %> - <%= reservation.end_time.strftime("%I:%M %p") %></p>
+    <p>Status: <%= reservation.status %></p>
+    <% if reservation.pending? %>
+      <%= button_to "Approve", approve_admin_reservation_path(reservation), method: :patch %>
+      <%= button_to "Deny", deny_admin_reservation_path(reservation), method: :patch %>
+    <% end %>
+  </article>
+<% end %>

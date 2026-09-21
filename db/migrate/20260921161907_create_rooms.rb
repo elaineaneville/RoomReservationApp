@@ -1,14 +1,10 @@
 class CreateRooms < ActiveRecord::Migration[8.1]
   def change
     create_table :rooms do |t|
-      t.string :site
-      t.string :reference
+      t.references :sites, null: false, foreign_key: true
       t.string :name
-      t.string :string
-      t.string :capacity
-      t.string :integer
+      t.integer :capacity
       t.string :description
-      t.string :string
 
       t.timestamps
     end

@@ -1,0 +1,7 @@
+<h1><%= @room.name %></h1>
+<p>Site: <%= link_to @room.site.name, site_path(@room.site) %></p>
+<p>Capacity: <%= @room.capacity %></p>
+<p>Description: <%= @room.description %></p>
+<h2>Make a Reservation for this Room</h2>
+<%= link_to "Reserve Room", new_reservation_path(room_id: @room.id) %>
+<%= link_to "Back to Rooms", rooms_path %>

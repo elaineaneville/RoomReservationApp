@@ -1,0 +1,11 @@
+<h1>Manage sites</h1>
+<%= link_to "New site", new_admin_site_path %>
+<%= link_to "Manage rooms", admin_rooms_path %>
+<% @sites.each do |site| %>
+  <article>
+    <h2><%= site.name %></h2>
+    <p><%= site.address %> | <%= site.rooms.size %> rooms</p>
+    <%= link_to "Edit", edit_admin_site_path(site) %>
+    <%= button_to "Delete", admin_site_path(site), method: :delete %>
+  </article>
+<% end %>

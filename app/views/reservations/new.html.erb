@@ -1,0 +1,48 @@
+<h1> New Reservation </h1>  
+<%= form_with(model: @reservation, local: true) do |form| %>
+    <% if @reservation.errors.any? %>
+    <div>
+        <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+        <ul>
+        <% @reservation.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <div>
+        <%= form.label :room_id, "Rooms" %>
+        <%= form.collection_select(:room_id, @rooms, :id,
+        ->(room) { "#{room.name} (#{room.site.name})" },
+        { selected: params[:room_id] },
+        { required: true }) %>
+    </div>
+    <br>
+    <div>
+        <%= form.label :reserver_name %>
+        <%= form.text_field :reserver_name, required: true %>
+    </div>
+
+    <div>
+        <%= form.label :reservation_date %>
+        <%= form.date_field :reservation_date, required: true %>
+    </div>
+
+    <div>
+        <%= form.label :start_time %>
+        <%= form.time_field :start_time, required: true %>
+    </div>
+
+    <div>
+        <%= form.label :end_time %>
+        <%= form.time_field :end_time, required: true %>
+    </div>
+
+    <div>
+        <%= form.submit "Create Reservation" %>
+    </div>
+<% end %>   
+
+<br>
+<%= link_to "Back to Reservations", reservations_path %>

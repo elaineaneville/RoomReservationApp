@@ -1,0 +1,23 @@
+<h1>All Reservations</h1>
+<%= link_to "Home", root_path %>
+<%= link_to "New Reservation", new_reservation_path %>
+
+<hr>
+
+<% if @reservations.any? %>
+    <% @reservations.each do |reservation| %>
+    <div>
+        <h3><%= link_to reservation.room.name, reservation_path(reservation) %></h3>
+        <p>Site: <%= link_to reservation.room.site.name, site_path(reservation.room.site) %></p>
+        <p>Reservation Date: <%= reservation.reservation_date %></p>
+        <p>Start Time: <%= reservation.start_time.strftime("%I:%M %p") %></p>
+        <p>End Time: <%= reservation.end_time.strftime("%I:%M %p") %></p>
+        <p>Status: <%= reservation.status.humanize %></p>
+        <p>Reserved By: <%= reservation.reserver_name %></p>
+        <%= link_to "View Reservation", reservation_path(reservation) %>
+    </div>
+    <hr>
+    <% end %>
+<% else %>
+    <p>No reservations found.</p>
+<% end %>

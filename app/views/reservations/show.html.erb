@@ -1,0 +1,12 @@
+<h1>Reservation Details</h1>
+<p> Site: <%= @reservation.room.site.name %></p>
+<p> Room: <%= @reservation.room.name %></p>
+<p> Reservation Date: <%= @reservation.reservation_date %></p>
+<p> Start Time: <%= @reservation.start_time.strftime("%I:%M %p") %></p>
+<p> End Time: <%= @reservation.end_time.strftime("%I:%M %p") %></p>
+<p> Status: <%= @reservation.status.humanize %></p>
+<p> Reserved By: <%= @reservation.reserver_name %></p>
+<%= link_to "Back to Reservations", reservations_path %>
+<br>
+<br>
+<%= button_to "Delete Reservation", reservation_path(@reservation), method: :delete, confirm: "Are you sure?" %>

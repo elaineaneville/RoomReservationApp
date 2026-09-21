@@ -1,0 +1,19 @@
+<h1><%= @sites.name %></h1>
+<p>Address: <%= @sites.address %></p>
+<p>Description: <%= @sites.description %></p>
+<h2>Rooms at this Site</h2>
+<% if @rooms.any? %>
+    <% @rooms.each do |room| %>
+    <div>
+        <p><%= link_to room.name, room_path(room) %></p>
+        <p>Capacity: <%= room.capacity %></p>
+        <p>Description: <%= room.description %></p>
+        <p><%= link_to "Reserve Room", new_reservation_path(room_id: room.id) %></p>
+    </div>
+    <hr>
+    <% end %>
+<% else %>
+    <p>No rooms available at this site.</p>
+<% end %>
+
+<% link_to "Back to Sites", sites_path %>

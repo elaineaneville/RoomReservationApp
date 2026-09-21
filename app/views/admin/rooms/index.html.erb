@@ -1,0 +1,11 @@
+<h1>Manage rooms</h1>
+<%= link_to "New room", new_admin_room_path %>
+<%= link_to "Manage sites", admin_sites_path %>
+<% @rooms.each do |room| %>
+  <article>
+    <h2><%= room.name %></h2>
+    <p><%= room.site.name %> | Capacity: <%= room.capacity %></p>
+    <%= link_to "Edit", edit_admin_room_path(room) %>
+    <%= button_to "Delete", admin_room_path(room), method: :delete %>
+  </article>
+<% end %>
