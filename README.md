@@ -1,6 +1,8 @@
 # TIU11RailsApp
 TIU11 Coding Challenge 2026
 
+AI Usage is indicated throughout the lines below with an additional section at the very end!
+
 Core Requirements
 As a staff member, I can:
 - View available rooms across multiple sites
